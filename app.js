@@ -24,13 +24,9 @@ app.use('/admin', adminRoutes);
 app.use(tiendaRoutes);
 
 app.use((req, res, next) => {
-    console.log('Viendo que URL el usuario inhresa pero no existe')
-    console.log(req.url);
     next();
 });
 
 app.use(errorController.get404)
 
-app.listen(3000, () => {
-    console.log('Mi aplicacion permite el uso de los siguientes tipos de doc: ', Persona.tiposDeDocumento())
-});
+app.listen(3000);

@@ -3,7 +3,6 @@ const Producto = require('../models/producto');
 exports.getProductos = (req, res) => {
     let productos = [];
     Producto.fetchAll(productosObtenidos => {
-        console.log(productosObtenidos);
         productos = productosObtenidos;
 
         res.render('tienda/lista-productos', {
@@ -13,6 +12,12 @@ exports.getProductos = (req, res) => {
         });
     })
 };
+
+exports.getProducto = (req, res) => {
+    console.log(req.params.idProducto);
+    res.redirect('/');
+
+}
 
 exports.getIndex = (req, res) => {
     Producto.fetchAll(productos => {
