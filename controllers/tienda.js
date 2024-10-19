@@ -4,7 +4,6 @@ exports.getProductos = (req, res) => {
     let productos = [];
     Producto.fetchAll(productosObtenidos => {
         productos = productosObtenidos;
-
         res.render('tienda/lista-productos', {
             prods: productos,
             titulo: "Productos de la tienda", 
@@ -16,8 +15,12 @@ exports.getProductos = (req, res) => {
 exports.getProducto = (req, res) => {
     const idProducto = req.params.idProducto;
     Producto.findById(idProducto, (producto) => {
-        console.log(producto);
-        res.redirect('/');
+        res.render('tienda/detalle-producto', {
+            producto: producto,
+            titulo: producto.nombre, 
+            path: '/productos'
+        });
+
     })
 }
 
