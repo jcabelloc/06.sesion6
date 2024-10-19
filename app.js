@@ -1,7 +1,5 @@
 const path = require('path');
 
-const Persona = require('./models/persona')
-
 const express = require('express');
 const bodyParser = require('body-parser')
 
