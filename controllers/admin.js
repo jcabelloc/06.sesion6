@@ -1,7 +1,11 @@
 const Producto = require('../models/producto');
 
 exports.getCrearProducto = (req, res) => {
-    res.render('admin/crear-producto', { titulo: 'Crear Producto', path: '/admin/crear-producto' })
+    res.render('admin/editar-producto', { 
+        titulo: 'Crear Producto', 
+        path: '/admin/crear-producto',
+        modoEdicion: false
+    })
 };
 
 exports.postCrearProducto = (req, res) => {
@@ -17,6 +21,24 @@ exports.postCrearProducto = (req, res) => {
 
     res.redirect('/')
 };
+
+exports.getEditarProducto = (req, res) => {
+
+    const modoEdicion = req.query.editar;
+    const idProducto = req.params.idProducto;
+    Producto.findById(idProducto, producto => {
+        console.log(producto)
+        if (!producto) {
+            return res.redirect('/');
+        }
+        res.render('admin/editar-producto', { 
+            titulo: 'Editar Producto', 
+            path: '/admin/editar-producto',
+            producto: producto,
+            modoEdicion: true,
+        })
+    })
+}
 
 
 exports.getProductos = (req, res) => {
