@@ -14,14 +14,15 @@ exports.getProductos = (req, res) => {
 };
 
 exports.getProducto = (req, res) => {
-    console.log(req.params.idProducto);
-    res.redirect('/');
-
+    const idProducto = req.params.idProducto;
+    Producto.findById(idProducto, (producto) => {
+        console.log(producto);
+        res.redirect('/');
+    })
 }
 
 exports.getIndex = (req, res) => {
     Producto.fetchAll(productos => {
-
         res.render('tienda/index', {
             prods: productos,
             titulo: "Pagina principal de la Tienda", 

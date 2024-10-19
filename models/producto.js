@@ -36,6 +36,13 @@ module.exports = class Producto {
 
     static fetchAll(cb) {
         return getProductosFromFile(cb);
-    }  
+    }
+
+    static findById(id, cb) {
+        getProductosFromFile(productos => {
+            const producto = productos.find(prod => prod.id === id);
+            cb(producto);
+        })
+    }
 
 }
