@@ -74,3 +74,9 @@ exports.getProductos = (req, res) => {
 
 
 };
+
+exports.postEliminarProducto = (req, res, next) => {
+    const idProducto = req.body.idProducto;
+    Producto.deleteById(idProducto);
+    res.redirect('/admin/productos');
+  };
