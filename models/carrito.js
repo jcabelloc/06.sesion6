@@ -63,4 +63,15 @@ module.exports = class Carrito {
             });
         });
     }
+
+    static getCarrito(cb) {
+        fs.readFile(p, (err, fileContent) => {
+            const carrito = JSON.parse(fileContent);
+            if (err) {
+                cb(null);
+            } else {
+                cb(carrito);
+            }
+        })
+    }
 }

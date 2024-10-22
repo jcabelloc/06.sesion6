@@ -14,6 +14,8 @@ router.get('/carrito', tiendaController.getCarrito);
 
 router.post('/carrito', tiendaController.postCarrito);
 
+router.post('/eliminar-producto-carrito', tiendaController.postEliminarProductoCarrito);
+
 router.get('/pedidos', tiendaController.getPedidos);
 
 
